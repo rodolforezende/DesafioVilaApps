@@ -1,6 +1,7 @@
 import React from 'react';
 import useSound from 'use-sound';
 import boopSfx from '../music/end.mp3';
+import '../styles/home.css';
 
 export default function Home() {
   const [minute, setMinute] = React.useState('00');
@@ -53,23 +54,25 @@ export default function Home() {
   }
 
   return (
-    <div>
-      <div>
+    <div className="container">
+      <div className="config">
         <button
+          className="button"
           type="button"
           onClick={() => setType(!type)}
         >
           { type ? 'Ativadade' : 'Intervalo' }
         </button>
-        <input onChange={({ target }) => setCounter(target.value)} />
+        <input className="input" placeholder="Digite em segundos" sonChange={({ target }) => setCounter(target.value)} />
       </div>
-      <div>
+      <div className="timer">
         <span>{ minute }</span>
         <span>:</span>
         <span>{ seconds }</span>
       </div>
       <div>
         <button
+          className="button"
           type="button"
           onClick={() => {
             setStart(!start);
@@ -78,6 +81,7 @@ export default function Home() {
           { start ? 'Pause' : 'Start' }
         </button>
         <button
+          className="button"
           type="button"
           onClick={stopTimer}
         >
